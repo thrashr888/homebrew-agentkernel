@@ -4,7 +4,7 @@
 
 class Agentkernel < Formula
   desc "Run AI coding agents in secure, isolated microVMs"
-  homepage "https://github.com/thrashr888/agentkernel"
+  homepage "https://thrashr888.github.io/agentkernel/"
   version "0.2.0"
   license "MIT"
 
@@ -52,6 +52,11 @@ class Agentkernel < Formula
 
       Or, if you don't want/need a background service you can just run:
         #{opt_bin}/agentkernel serve
+
+      The sandbox backend is auto-detected:
+        - macOS 26+: Apple Containers (VM isolation)
+        - macOS:     Docker or Podman (container isolation)
+        - Linux:     Firecracker microVMs if KVM available, otherwise Docker/Podman
     EOS
   end
 
