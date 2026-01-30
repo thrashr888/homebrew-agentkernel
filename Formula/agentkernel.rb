@@ -34,6 +34,27 @@ class Agentkernel < Formula
     bin.install "agentkernel"
   end
 
+  service do
+    run [opt_bin/"agentkernel", "serve", "--host", "127.0.0.1", "--port", "18888"]
+    keep_alive true
+    log_path var/"log/agentkernel.log"
+    error_log_path var/"log/agentkernel.error.log"
+    working_dir HOMEBREW_PREFIX
+  end
+
+  def caveats
+    <<~EOS
+      To start agentkernel as a background service (listens on localhost:18888):
+        brew services start agentkernel
+
+      To restart agentkernel after an upgrade:
+        brew services restart agentkernel
+
+      Or, if you don't want/need a background service you can just run:
+        #{opt_bin}/agentkernel serve
+    EOS
+  end
+
   test do
     assert_match "agentkernel", shell_output("#{bin}/agentkernel --version")
   end
