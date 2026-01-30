@@ -45,10 +45,10 @@ class Agentkernel < Formula
   def caveats
     <<~EOS
       To start agentkernel as a background service (listens on localhost:18888):
-        brew services start agentkernel
+        brew services start thrashr888/agentkernel/agentkernel
 
       To restart agentkernel after an upgrade:
-        brew services restart agentkernel
+        brew services restart thrashr888/agentkernel/agentkernel
 
       Or, if you don't want/need a background service you can just run:
         #{opt_bin}/agentkernel serve
