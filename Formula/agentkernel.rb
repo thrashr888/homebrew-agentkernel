@@ -44,19 +44,10 @@ class Agentkernel < Formula
 
   def caveats
     <<~EOS
-      To start agentkernel as a background service (listens on localhost:18888):
-        brew services start thrashr888/agentkernel/agentkernel
+      The service listens on localhost:18888.
 
-      To restart agentkernel after an upgrade:
-        brew services restart thrashr888/agentkernel/agentkernel
-
-      Or, if you don't want/need a background service you can just run:
-        #{opt_bin}/agentkernel serve
-
-      The sandbox backend is auto-detected:
-        - macOS 26+: Apple Containers (VM isolation)
-        - macOS:     Docker or Podman (container isolation)
-        - Linux:     Firecracker microVMs if KVM available, otherwise Docker/Podman
+      Requires Docker, Podman, or Firecracker (Linux with KVM).
+      Run `agentkernel doctor` to check your setup.
     EOS
   end
 
